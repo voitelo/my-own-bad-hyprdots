@@ -1,0 +1,138 @@
+{
+  "logo": {
+    "source": "~/.config/fastfetch/logo.txt"
+  },
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "modules": [
+    {
+      "type": "title",
+      "keyColor": "#ffffff",
+      "valueColor": "#ffffff"
+    },
+    {
+      "type": "separator"
+    },
+    // OS + System Info (blues)
+    {
+      "type": "os",
+      "keyColor": "#61afef",
+      "valueColor": "#61afef",
+      "keyValueSeparator": "  "
+    },
+    {
+      "type": "kernel",
+      "keyColor": "#569cd6",
+      "valueColor": "#569cd6",
+      "keyValueSeparator": "  "
+    },
+    {
+      "type": "uptime",
+      "keyColor": "#5dade2",
+      "valueColor": "#5dade2",
+      "keyValueSeparator": "  "
+    },
+    {
+      "type": "disk",
+      "key": "OS Age ",
+      "folders": "/",
+      "keyColor": "#5dade2",
+      "format": "{days} days"
+    },
+    {
+      "type": "packages",
+      "keyColor": "#3fa9f5",
+      "valueColor": "#3fa9f5",
+      "keyValueSeparator": "  "
+    },
+    {
+      "type": "shell",
+      "showVersion": false,
+      "keyColor": "#6495ed",
+      "valueColor": "#6495ed",
+      "keyValueSeparator": "  ",
+      "format": "Bash"
+    },
+    {
+      "type": "custom",
+      "format": "------------------"
+    },
+    // GUI Info (purples/cyans)
+    {
+      "type": "display",
+      "key": "Display",
+      "keyColor": "#9d79d6",
+      "valueColor": "#d6acff",
+      "keyValueSeparator": "  "
+    },
+    {
+      "type": "de",
+      "keyColor": "#b57edc",
+      "valueColor": "#e5c1f4",
+      "keyValueSeparator": "  "
+    },
+    {
+      "type": "wm",
+      "keyColor": "#c678dd",
+      "valueColor": "#d1a0ff",
+      "keyValueSeparator": "  "
+    },
+    {
+      "type": "theme",
+      "keyColor": "#c586c0",
+      "valueColor": "#ffcbff",
+      "keyValueSeparator": "  "
+    },
+    {
+      "type": "icons",
+      "keyColor": "#c792ea",
+      "valueColor": "#d7bfff",
+      "keyValueSeparator": "  "
+    },
+    {
+      "type": "custom",
+      "format": "-----------------------------"
+    },
+    // Hardware (reds/yellows)
+    {
+      "type": "cpu",
+      "keyColor": "#e06c75",
+      "valueColor": "#f28b82",
+      "keyValueSeparator": "  "
+    },
+    {
+      "type": "gpu",
+      "keyColor": "#ff5555",
+      "valueColor": "#ff8888",
+      "keyValueSeparator": "  "
+    },
+    {
+      "type": "memory",
+      "keyColor": "#f78c6c",
+      "valueColor": "#ffb86c",
+      "keyValueSeparator": "  "
+    },
+    // Power (green/yellow)
+    {
+      "type": "battery",
+      "keyColor": "#f1fa8c",
+      "valueColor": "#ffff99",
+      "keyValueSeparator": "  "
+    },
+    {
+      "type": "poweradapter",
+      "keyColor": "#a1e887",
+      "valueColor": "#b8f5a6",
+      "keyValueSeparator": "  "
+    },
+    {
+      "type": "custom",
+      "format": "-------------------------------------------------------------------------"
+    },
+    {
+      "type": "break"
+    },
+    {
+      "type": "colors"
+    }
+  ]
+}

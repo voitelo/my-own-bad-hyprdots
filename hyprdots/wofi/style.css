@@ -1,0 +1,62 @@
+/* Global font and color */
+* {
+    font-family: "Monocraft", monospace;
+    font-size: 13px;
+    color: #bbbbbb;
+}
+
+/* Main window */
+window {
+    background-color: rgba(20, 20, 20, 0.9); /* match Waybar dark base */
+    border: 3px solid #2D1C2A; /* Waybar border color */
+    border-radius: 8px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
+}
+
+/* Input box */
+#input {
+    margin: 8px;
+    padding: 6px;
+    border-radius: 6px;
+    background-color: rgba(32, 28, 25, 0.75); /* soft translucent input */
+    color: #bbbbbb;
+    caret-color: #d16ba5; /* purple accent like Waybar hover */
+}
+
+#input:focus {
+    background-color: rgba(40, 35, 30, 0.9);
+    border: 1px solid #d16ba5;
+    outline: none;
+}
+
+/* Entry list container */
+#inner-box, #outer-box, #scroll {
+    margin: 4px;
+    background-color: transparent;
+}
+
+/* Individual entries */
+#entry {
+    padding: 8px 10px;
+    border-radius: 6px;
+    margin: 4px;
+    background-color: rgba(209, 107, 165, 0.2); /* Waybar module base */
+    color: #bbbbbb;
+}
+
+#entry:selected {
+    background-color: rgba(209, 107, 165, 0.35); /* Waybar hover highlight */
+    color: #fff7e1;
+    border: 1px solid #d16ba5;
+}
+
+/* Text and image inside entry */
+#text {
+    background-color: transparent;
+    color: inherit;
+}
+
+#img {
+    margin-right: 8px;
+}
+
