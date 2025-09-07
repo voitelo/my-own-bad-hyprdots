@@ -65,7 +65,7 @@ while true; do
     case "$install_answer" in
         [Yy])
             echo "Installing packages..."
-            yay -S bluez hyprlock bluez-utils blueman waybar zen-browser-bin ttf-monocraft-git kitty fastfetch walker-bin wofi flatpak dolphin emote swaybg mpvpaper swaync love minecraft-launcher
+            yay -S bluez hyprlock bluez-utils blueman waybar zen-browser-bin ttf-monocraft-git kitty fastfetch brightnessctl wlogout walker-bin wofi flatpak dolphin emote swaybg mpvpaper swaync love hypridle gst-plugins-good gst-libav gstreamer
             sleep 1
             flatpak install -y org.vinegarhq.Sober com.obsproject.Studio com.github.tchx84.Flatseal
             break ;;
