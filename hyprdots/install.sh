@@ -209,6 +209,10 @@ while true; do
     esac
 done
 
+echo"you will have to take Nuvra out od this git cloned repository just so you know, if you want my terrible browser, me personally i wouldnt want it"
+
+sleep 1
+
 cat <<'EOF'
 
  _________________________________
