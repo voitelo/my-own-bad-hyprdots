@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <object class="GtkMenu" id="menu">
+
+    <child>
+      <object class="GtkMenuItem" id="action-1">
+        <property name="label">Dissconect</property>
+      </object>
+    </child>
+
+    <child>
+      <object class="GtkMenuItem" id="action-2">
+        <property name="label">Reconnect</property>
+      </object>
+    </child>
+
+    <child><object class="GtkSeparatorMenuItem" id="separator"/></child>
+
+    <child>
+      <object class="GtkMenuItem" id="action-3">
+        <property name="label"> Network settings</property>
+      </object>
+    </child>
+   
+  </object>
+</interface>
+
