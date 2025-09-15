@@ -1,1 +1,120 @@
-{ "include": [ "~/.config/waybar/layouts/with_music.jsonc" ] }
+{
+  "layer": "top",
+  "position": "top",
+  "height": 30,
+  "modules-left": ["custom/exit", "cpu", "memory", "network"],
+  "modules-center": ["custom/w1", "custom/w2", "clock", "custom/w3", "custom/w4"],
+  "modules-right": ["custom/media", "pulseaudio", "battery", "custom/brightness", "tray"],
+
+  "clock": {
+    "format": "{:%H:%M}",
+    "tooltip-format": "{:%A, %d %B %Y | %H:%M:%S}",
+    "interval": 1
+  },
+
+  "cpu": {
+    "format": "⚙ {usage}%",
+    "tooltip": true
+  },
+ 
+  "custom/exit": {
+    "format": "🚫",
+    "tooltip": false,
+    "on-click": "wlogout --protocol layer-shell"
+  }, 
+
+  "memory": {
+    "format": "💾{used:0.1f}G",
+    "tooltip": true
+  },
+
+  "network": {
+    "format-wifi": "🌐",
+    "format-ethernet": "󰈀 {ipaddr}",
+    "format-disconnected": "󰖪 Disconnected",
+    "on-click": "python3 /home/leg/Custom-Apps/SuperNM-gui.py",
+    "tooltip": "Network"
+  },
+
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-icons": {
+      "default": [
+        "[ ]",    // 1–10%
+        "[| ]",   // 11–20%
+        "[|| ]",  // 21–30%
+        "[||| ]", // 31–50%
+        "[|||| ]",// 51–70%
+        "[|||||]" // 71–100%
+      ],
+      "muted": "[MUTE]"
+    },
+    "format-muted": "[X] muted",
+    "tooltip": true,
+    "on-click": "python3 /home/leg/Custom-Apps/SuperNM-gui.py"
+  },
+
+  "battery": {
+    "format": "{icon} {capacity}%",
+    "format-charging": " {icon} {capacity}%",
+    "tooltip": true,
+    "format-icons": [
+      "[ ]",    // 0–10%
+      "[| ]",   // 11–20%
+      "[| ]",   // 21–30%
+      "[|| ]",  // 31–40%
+      "[|| ]",  // 41–50%
+      "[||| ]", // 51–60%
+      "[||| ]", // 61–70%
+      "[|||| ]",// 71–80%
+      "[|||| ]",// 81–90%
+      "[|||||]" // 91–100%
+    ]
+  },
+
+  "custom/brightness": {
+    "exec": "brightnessctl | grep -oP '\\d+(?=%)' | head -n1",
+    "format": " {}%",
+    "interval": 2,
+    "on-scroll-up": "brightnessctl set +5%",
+    "on-scroll-down": "brightnessctl set 5%-",
+    "tooltip": "Adjust brightness"
+  }, 
+
+  "tray": {},
+
+  "custom/w1": {
+    "exec": "echo '🏀'",
+    "interval": 3600,
+    "on-click": "hyprctl dispatch workspace 1",
+    "tooltip": "Workspace 1"
+  },
+
+  "custom/w2": {
+    "exec": "echo '🎃'",
+    "interval": 3600,
+    "on-click": "hyprctl dispatch workspace 2",
+    "tooltip": "Workspace 2"
+  },
+
+  "custom/w3": {
+    "exec": "echo '🎃'",
+    "interval": 3600,
+    "on-click": "hyprctl dispatch workspace 3"
+  },
+
+  "custom/w4": {
+    "exec": "echo '🏀'",
+    "interval": 3600,
+    "on-click": "hyprctl dispatch workspace 4",
+    "tooltip": "Workspace 4"
+  },
+
+  "custom/media": {
+    "exec": "playerctl metadata --format '{{status}} {{artist}} - {{title}}' || echo 'No media playing'",
+    "interval": 2,
+    "format": "🎧 {}",
+    "tooltip": "Now Playing",
+    "on-click": "quickshell --config ~/.config/quickshell/media"
+  }
+}

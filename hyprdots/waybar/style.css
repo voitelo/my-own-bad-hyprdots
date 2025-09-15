@@ -1,1 +1,32 @@
-@import "css/style.css";
+/* Global font and color */
+* {
+    font-family: "Monocraft", monospace;
+    font-size: 13px;
+    color: #bbbbbb;
+}
+
+/* Waybar main container */
+window#waybar {
+    background: rgba(20, 20, 20, 0.9);
+    background: #0D0908;
+    border: 3px solid #2D1C2A;
+    border-radius: 8px;
+    padding: 4px;
+}
+
+/* Modules styling */
+#cpu, #memory, #network, #clock, #pulseaudio, #battery, #tray,
+#custom-w1, #custom-w2, #custom-w3, #custom-w4, #custom-media, #custom-exit, #custom-brightness {
+    padding: 4px 10px;
+    margin: 0 6px;
+    background-color: rgba(209, 107, 165, 0.2); /* matching module background */
+    border-radius: 6px;
+}
+
+/* Hover effect for modules */
+#cpu:hover, #memory:hover, #network:hover, #clock:hover,
+#pulseaudio:hover, #battery:hover, #tray:hover,
+#custom-w1:hover, #custom-w2:hover, #custom-w3:hover, #custom-w4:hover,
+#custom-media:hover, #custom-exit:hover, #custom-brightness:hover {
+    background-color: rgba(209, 107, 165, 0.35); /* softer hover highlight */
+}
