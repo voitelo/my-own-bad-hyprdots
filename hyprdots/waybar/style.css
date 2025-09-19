@@ -1,0 +1,83 @@
+/* ==============================
+   Catppuccin Mocha (warmer variant)
+   ============================== */
+
+@define-color base   #1e1e2e;
+@define-color mantle #181825;
+@define-color crust  #11111b;
+
+@define-color text   #cdd6f4;
+
+/* Warmer emphasis */
+@define-color surface0 #2a1e25;   /* shifted slightly toward mauve */
+@define-color surface1 #3a2434;
+@define-color surface2 #4a2d43;
+
+/* Core accents */
+@define-color peach   #fab387;
+@define-color mauve   #cba6f7;
+@define-color pink    #f5c2e7;
+@define-color rosewater #f5e0dc;
+@define-color flamingo #f2cdcd;
+@define-color red     #f38ba8;
+@define-color yellow  #f9e2af;
+@define-color green   #a6e3a1;
+
+/* ==============================
+   Global font
+   ============================== */
+* {
+    font-family: "Monocraft", monospace;
+    font-size: 13px;
+    color: @text;
+}
+
+/* ==============================
+   Waybar container
+   ============================== */
+window#waybar {
+    background: @base;
+    border: 2px solid @surface0;
+    border-radius: 8px;
+    padding: 4px;
+}
+
+/* ==============================
+   Modules with prominent backgrounds
+   ============================== */
+#cpu, #memory, #network, #clock, #pulseaudio, #battery, #tray,
+#custom-w1, #custom-w2, #custom-w3, #custom-w4,
+#custom-media, #custom-exit, #custom-brightness {
+    padding: 4px 10px;
+    margin: 0 6px;
+    background-color: @surface1;
+    border-radius: 6px;
+    color: @text;
+    border: 1px solid @surface2;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+/* ==============================
+   Hover effect
+   ============================== */
+#cpu:hover, #memory:hover, #network:hover, #clock:hover,
+#pulseaudio:hover, #battery:hover, #tray:hover,
+#custom-w1:hover, #custom-w2:hover, #custom-w3:hover, #custom-w4:hover,
+#custom-media:hover, #custom-exit:hover, #custom-brightness:hover {
+    background-color: @surface2;
+    transition: background-color 0.3s ease;
+}
+
+/* ==============================
+   Module accent colors
+   ============================== */
+#cpu { color: @peach; }
+#memory { color: @mauve; }
+#network { color: @pink; }
+#clock { color: @green; }
+#pulseaudio { color: @rosewater; }
+#battery { color: @yellow; }
+#custom-exit { color: @red; }
+#custom-brightness { color: @flamingo; }
+#custom-media { color: @mauve; }
+
