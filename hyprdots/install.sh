@@ -65,7 +65,7 @@ while true; do
     case "$install_answer" in
         [Yy])
             echo "Installing packages..."
-            yay -S bluez hyprlock bluez-utils blueman waybar zen-browser-bin ttf-monocraft-git kitty fastfetch brightnessctl wlogout walker-bin wofi flatpak dolphin emote swaybg mpvpaper swaync love hypridle gst-plugins-good gst-libav gstreamer
+            yay -S bluez hyprlock bluez-utils blueman waybar zen-browser-bin flameshot ttf-monocraft-git kitty fastfetch brightnessctl wlogout walker-bin wofi flatpak dolphin emote swaybg mpvpaper swaync love hypridle
             sleep 1
             flatpak install -y org.vinegarhq.Sober com.obsproject.Studio com.github.tchx84.Flatseal
             break ;;
@@ -133,21 +133,6 @@ while true; do
     esac
 done
 
-# --- Import Minecraft instances ---
-while true; do
-    printf "Do you want to import your Minecraft launcher instances (.minecraft)? (y/n): "
-    read minecraft_answer
-    case "$minecraft_answer" in
-        [Yy])
-            echo "Copying .minecraft..."
-            [ -d ~/.minecraft ] && mv ~/.minecraft ~/.minecraft.backup.$(date +%s)
-            cp -r "$SCRIPT_DIR/hyprdots/.minecraft" ~/
-            break ;;
-        [Nn]) echo "Skipping Minecraft."; break ;;
-        *) echo "Please answer y or n." ;;
-    esac
-done
-
 # --- Import Hyprland configs ---
 while true; do
     printf "Do you want to import Hyprland configs to ~/.config/hypr? (y/n): "
@@ -180,21 +165,6 @@ while true; do
     esac
 done
 
-# --- Import Lua games ---
-while true; do
-    printf "Do you want to import Lua games to ~/offline-lua-games? (y/n): "
-    read lua_answer
-    case "$lua_answer" in
-        [Yy])
-            echo "Copying Lua games..."
-            mkdir -p ~/offline-lua-games
-            cp -r "$SCRIPT_DIR/hyprdots/offline-lua-games/"* ~/offline-lua-games/
-            break ;;
-        [Nn]) echo "Skipping Lua games."; break ;;
-        *) echo "Please answer y or n." ;;
-    esac
-done
-
 # --- Optional reload of Waybar and Hyprland ---
 while true; do
     printf "Reload Waybar and Hyprland now? (y/n): "
@@ -209,7 +179,10 @@ while true; do
     esac
 done
 
-echo"you will have to take Nuvra out od this git cloned repository just so you know, if you want my terrible browser, me personally i wouldnt want it"
+echo"there is allot of folders missing from the import, manually move them to their paths if you want them!!"
+echo"there is allot of folders missing from the import, manually move them to their paths if you want them!!"
+echo"there is allot of folders missing from the import, manually move them to their paths if you want them!!"
+echo"there is allot of folders missing from the import, manually move them to their paths if you want them!!"
 
 sleep 1
 
