@@ -196,8 +196,9 @@ require("lazy").setup({
     end
   },
 
-  -- Biscuit / Neogen
-  { "danymat/neogen", },
+    -- biscuits  
+    'code-biscuits/nvim-biscuits',
+
 })
 
 -- ======================
@@ -273,3 +274,9 @@ pcall(function()
   require("nvim-treesitter.configs").setup({ highlight = { enable = true }, indent = { enable = true } })
 end)
 
+-- nvim biscuits
+
+require('nvim-biscuits').setup({
+  toggle_keybind = "<leader>b",
+  show_on_start = true -- defaults to false
+})
