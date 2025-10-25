@@ -1,0 +1,9 @@
+{
+  "webSearch": {
+    "enabled": true,
+    "searchEngines": []
+  },
+  "emojiLauncher": {
+    "enabled": true
+  }
+}
