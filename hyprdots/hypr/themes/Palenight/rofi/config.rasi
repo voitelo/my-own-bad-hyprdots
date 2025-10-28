@@ -1,0 +1,131 @@
+/*
+ * ROFI color theme
+ * Pale Night variant
+ *
+ * Palette based on Pale Night: https://github.com/drewtempelmeyer/palenight.vim
+ */
+
+* {
+    base00: #292d3e;  /* background */
+    base01: #393f58;  /* lighter background */
+    base02: #515875;  /* selection background */
+    base03: #737994;  /* comments/secondary text */
+    base04: #9ca0bc;  /* light text */
+    base05: #a6accd;  /* main text */
+    base06: #c1c5e0;  /* bright text */
+    base07: #ffffff;  /* pure white */
+    base08: #f07178;  /* red */
+    base09: #f78c6c;  /* orange */
+    base0A: #ffcb6b;  /* yellow */
+    base0B: #c3e88d;  /* green */
+    base0C: #89ddff;  /* cyan */
+    base0D: #82aaff;  /* blue */
+    base0E: #c792ea;  /* purple */
+    base0F: #ff5370;  /* pink */
+
+    spacing: 0;
+    background-color: transparent;
+}
+
+window {
+    transparency: "real";
+    background-color: #292d3ecc; /* 80% opacity */
+}
+
+mainbox {
+    children: [inputbar, message, mode-switcher, listview];
+    spacing: 30px;
+    padding: 30px 0;
+    border: 1px;
+    border-color: @base0D;
+}
+
+inputbar {
+    padding: 0 30px;
+    children: [prompt, textbox-prompt-colon, entry, case-indicator];
+}
+
+prompt {
+    text-color: @base0D;
+}
+
+textbox-prompt-colon {
+    expand: false;
+    str: ":";
+    margin: 0 1ch 0 0;
+    text-color: @base0D;
+}
+
+entry {
+    text-color: @base05;
+}
+
+case-indicator {
+    text-color: @base0F;
+}
+
+mode-switcher, message {
+    border: 1px 0;
+    border-color: @base0D;
+}
+
+button, textbox {
+    background-color: @base02;
+    text-color: @base05;
+    padding: 5px;
+}
+
+button selected {
+    background-color: @base0D;
+}
+
+listview {
+    scrollbar: true;
+    margin: 0 10px 0 30px;
+}
+
+scrollbar {
+    background-color: @base02;
+    handle-color: @base0D;
+    handle-width: 10px;
+    border: 0 1;
+    border-color: @base0D;
+    margin: 0 0 0 20px;
+}
+
+element {
+    padding: 5px;
+    spacing: 5px;
+    highlight: bold underline;
+    children: [element-icon, element-text];
+}
+element-text, element-icon {
+    background-color: inherit;
+    text-color: inherit;
+    foreground-color: inherit;
+}
+
+element normal {
+    background-color: transparent;
+}
+
+element selected {
+    background-color: @base0D;
+}
+
+element alternate {
+    /* background-color: @base02; */
+}
+
+element normal normal, element selected normal, element alternate normal {
+    text-color: @base05;
+}
+
+element normal urgent, element selected urgent, element alternate urgent {
+    text-color: @base0F;
+}
+
+element normal active, element selected active, element alternate active {
+    text-color: @base0B;
+}
+
