@@ -81,4 +81,3 @@ function fish_prompt
     printf "> "
 end
 
-set -x XKB_DEFAULT_LAYOUT de
