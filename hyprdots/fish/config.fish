@@ -1,5 +1,3 @@
-# ~/.config/fish/config.fish
-
 # --- History settings ---
 set -gx HISTFILE /dev/null
 set -gx HISTSIZE 5000
@@ -13,10 +11,14 @@ if not status is-interactive
     exit
 end
 
-# --- System aliases ---
-alias ls='lsd'
+# fastfetch alias
+alias fastfetch_no_logo="fastfetch --logo none"
 
-# --- Aliases for colorized output with bat ---
+# ls aliases (aka eza)
+alias 'lss'="eza --color=always  --icons=always --no-time --no-user --long"
+alias 'ls'="eza --color=always --icons=always --no-user --no-time"
+
+#--- Aliases for colorized output with bat ---
 alias lsblk='lsblk | bat -l conf'
 alias lsblc='lsblk | bat -l conf -p'
 alias free='free -h | bat -l conf'
@@ -30,29 +32,25 @@ alias update="$HOME/Scripts/updateNclean.sh"
 alias maintain="$HOME/Scripts/maintanence.sh"
 alias vim="nvim"
 alias v="nvim"
-alias l="ls -lapr"
-alias yi="paru -S"
+alias yi="yay -S"
 alias pi="sudo pacman -S"
-alias ri="paru -Rns"
+alias ri="yay -Rns"
 alias pri="sudo pacman -Rns"
 alias yc="yay -Yc"
-alias yay='paru'
 alias w="which" 
 alias chroot="arch-chroot"
 alias FZF="fzf | xargs -o nvim"
+alias gemini="cd gemini && command gemini"
 
-# --- Flatpak aliases ---
-alias discord="flatpak run com.discordapp.Discord"
-alias flatseal="flatpak run com.github.tchx84.Flatseal"
-alias obs="flatpak run com.obsproject.Studio"
-alias spotify="flatpak run com.spotify.Client"
-alias steam="flatpak run com.valvesoftware.Steam"
-alias sober="flatpak run org.vinegarhq.Sober"
-alias roblox="flatpak run org.vinegarhq.Sober"
+# window specific command alias
+
+alias dvd="hyprdvd --workspaces 1,2,3,4,5,6 --exit-on signal -s
+kitty,qutebrowser --title DVD"
 
 fastfetch
 
-export LFS=/mnt/lfs
+export PATH="/bin/scripts:$PATH"
+export PATH="/bin/flatpaks:$PATH"
 
 # --- Fancy gradient prompt (green → blue → green) ---
 function fish_prompt
@@ -79,8 +77,8 @@ function fish_prompt
 
     printf "\033[0m\n"
 
-    # Print the prompt line with literal >
-    printf "-> "
+    # Print the prompt line
+    printf "> "
 end
 
 set -x XKB_DEFAULT_LAYOUT de
