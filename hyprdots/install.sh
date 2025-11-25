@@ -25,6 +25,7 @@ case $chaotic_aur in
     y)
       sudo chmod +x chaotic-aur.sh
       ./chaotic-aur.sh
+      ;;
     n)
       echo "ok"
       ;;
