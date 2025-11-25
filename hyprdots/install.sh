@@ -16,15 +16,34 @@ read -rsn1 pkgneed
 echo
 pkgneed=${pkgneed,,}
 
+echo "Yy/Nn Do you want to get chaotic aur?"
+read -rsn1 chaotic_aur
+echo
+chaotic_aur=${chaotic_aur,,}
+
+case $chaotic_aur in
+    y)
+      sudo chmod +x chaotic-aur.sh
+      ./chaotic-aur.sh
+    n)
+      echo "ok"
+      ;;
+    *)
+      echo "invalid input, run the installer again and remove partially done steps"
+      exit
+      ;;
+esac
+
 case $pkgneed in
     y)
-      yay -S brightnessctl git fzf caelestia-shell caelestia-cli kitty cosmic-files cosmic-store fish qutebrowser flatpak flameshot localsend neovim rofi jq libxcursor bat eza blueman bluez bluez-utils dms-shell-git fastfetch gammastep grim hyprland hypridle hyprlock hyprpicker imv mpv libnotify mako ttf-cascadia-code-nerd ttf-dejavu ttf-fira-code ttf-monocraft-git wayland wayland-protocols xorg-xwayland swww pipewire pipewire-alsa pipewire-pulse pipewire-jack
+      yay -S base base-devel bash bat blueman bluez bluez-libs bluez-utils brightnessctl caelestia-cli caelestia-shell-git cliphist dms-shell-git dunst eza fastfetch ffmpeg fish flameshot flatpak fuzzel fzf gammastep gdu gpu-screenrecorder-git grim hyprcursor hyprgraphics hyprdvd hypremoji hypridle hyprland hyprland-guiutils hyprlang hyprlock hyprpicker hyprsettings-git hyprshot hyprswitch hyprtoolkit hyprutils imagemagick jq kitty libnotify localsend lua man-db mpv nautilus neovim networkmanager nsxiv pipewire pipewire-alsa pipewire-pulse pipewire-jack polkit polkit-gnome python tk quickshell-git qutebrowser reflector swww ttf-monocraft-git uxplay wayland wayland-protocols wmenu zsh zsh-autosuggestions zsh-syntax-highlighting
       flatpak install -y com.discordapp.Discord
       flatpak install -y com.github.flxzt.rnote
       flatpak install -y com.github.tchx84.Flatseal
       flatpak install -y com.visualstudio.code
       flatpak install -y org.gimp.GIMP
       flatpak install -y org.prismlauncher.PrismLauncher
+      echo "sorry i mightve missed a package or two, i only went over it once soo, if you see some errors with scripts maybe, thats why"
       ;;
     n)
       echo "you do you, it might not be fun"
@@ -259,4 +278,3 @@ esac
 
 clear
 echo "Dotfiles installer finished!"
-
