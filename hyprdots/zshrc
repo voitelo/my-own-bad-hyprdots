@@ -1,0 +1,158 @@
+autoload -Uz compinit
+compinit
+
+fpath+="/usr/share/zsh/functions/Misc" && autoload -Uz tetriscurses
+
+##### --- History settings ---
+HISTFILE=/dev/null
+HISTSIZE=5000
+SAVEHIST=5000
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+
+# no greeting
+# (zsh doesn't greet by default, but just in case)
+precmd_functions=()
+
+##### --- Only run the rest in interactive shells ---
+[[ $- != *i* ]] && return
+
+
+##### --- geminii: cd into ~/gemini only if starting in ~ ---
+geminii() {
+    if [[ "$PWD" = "$HOME" ]]; then
+        cd "$HOME/gemini" || return
+        gemini "$@"
+    else
+        echo "go into your home directory first"
+    fi
+}
+
+
+##### --- Aliases ---
+alias fastfetch_no_logo="fastfetch --logo none"
+
+# eza aliases
+alias lss="eza --color=always --icons=always --no-time --no-user --long"
+alias ls="eza --color=always --icons=always --no-user --no-time"
+
+# bat colorized aliases
+alias lsblk='lsblk | bat -l conf'
+alias lsblc='lsblk | bat -l conf -p'
+alias free='free -h | bat -l conf'
+alias ps='ps aux | bat -l conf -p'
+
+# user aliases
+alias breezy="$HOME/Breezy/breezy.py"
+alias Breezy="$HOME/Breezy/breezy.py"
+alias mean="$HOME/Scripts/mean-PM.sh"
+alias update="$HOME/Scripts/updateNclean.sh"
+alias maintain="$HOME/Scripts/maintanence.sh"
+alias vim="nvim"
+alias v="nvim"
+alias yi="yay -S"
+alias pi="sudo pacman -S"
+alias ri="yay -Rns"
+alias pri="sudo pacman -Rns"
+alias yc="yay -Yc"
+alias w="which"
+alias chroot="arch-chroot"
+alias FZF='nvim "$(fzf)"'
+
+alias kilall="killall"
+alias killlall="killall"
+
+# window specific alias
+alias dvd='hyprdvd --workspaces 1,2,3,4,5,6 --exit-on signal -s kitty,qutebrowser --title DVD'
+
+
+##### --- fastfetch on startup ---
+fastfetch
+
+
+##### --- zoxide init ---
+eval "$(zoxide init zsh)"
+
+
+##### --- PATH additions ---
+export PATH="/bin/scripts:$PATH"
+export PATH="/bin/flatpaks:$PATH"
+
+
+##### --- Prompt (replicating the fish prompt logic) ---
+# Colors
+local col_time="%K{black}%F{yellow}"
+local col_user="%K{black}%F{white}"
+local col_path="%K{black}%F{white}"
+local col_arrow_ok="%K{black}%F{white}"
+local col_arrow_fail="%K{black}%F{red}"
+local col_reset="%f%k"
+
+# ssh info
+get_ssh_info() {
+    if [[ -n "$SSH_CLIENT" ]]; then
+        echo "(ssh from ${SSH_CLIENT%% *}) "
+    fi
+}
+
+# precmd builds the prompt before each command
+precmd() {
+    local exit_code=$?
+    local arrow="$col_arrow_ok"
+    [[ $exit_code -ne 0 ]] && arrow="$col_arrow_fail"
+
+    local time="$(date +'%H:%M')"
+    local path="$(pwd)"
+    local ssh_info="$(get_ssh_info)"
+
+    PROMPT="$ssh_info$col_time$time $col_path$path $arrow❯ $col_reset "
+}
+
+
+##### --- Blankline enter: newline when pressing Enter on empty command ---
+blankline_enter() {
+    if [[ -z $BUFFER ]]; then
+        print ""
+        zle reset-prompt
+    else
+        zle accept-line
+    fi
+}
+zle -N blankline_enter
+bindkey '^M' blankline_enter     # Enter key
+
+
+##### --- Extra interactive functions ---
+bash() {
+    echo "you are now in bash"
+    command bash "$@"
+}
+
+df() {
+    command df "$@"
+    echo "Checked filesystem usage"
+}
+
+freee() {
+    command free -h "$@"
+    echo "Memory status checked"
+}
+
+lol() {
+    printf "bro i know right, that was so funy\n\n"
+}
+
+what() {
+    printf "bro trueee, that was sooo weird\n\n"
+}
+
+huh() {
+    printf "bro exactly, that was so confusing\n\n"
+}
+
+
+# plugins
+
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
