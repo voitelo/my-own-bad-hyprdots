@@ -1,3 +1,5 @@
+# ~/.config/fish/config.fish
+
 # --- History settings ---
 set -gx HISTFILE /dev/null
 set -gx HISTSIZE 5000
@@ -9,6 +11,17 @@ set -g fish_greeting ""
 # --- Only run commands in interactive sessions ---
 if not status is-interactive
     exit
+end
+
+# function for cd into gemini and running gemini only in ~/gemini
+function geminii
+    # optional: pass along any arguments
+    if test "$PWD" = "$HOME"
+        cd gemini
+        gemini $argv
+    else
+        echo "go into your home directory first"
+    end
 end
 
 # fastfetch alias
@@ -40,44 +53,83 @@ alias yc="yay -Yc"
 alias w="which" 
 alias chroot="arch-chroot"
 alias FZF="fzf | xargs -o nvim"
-alias gemini="cd gemini && command gemini"
+
+alias kilall="killall"
+alias killlall="killall"
 
 # window specific command alias
-
 alias dvd="hyprdvd --workspaces 1,2,3,4,5,6 --exit-on signal -s
 kitty,qutebrowser --title DVD"
 
 fastfetch
 
+zoxide init fish | source
+
 export PATH="/bin/scripts:$PATH"
 export PATH="/bin/flatpaks:$PATH"
 
-# --- Fancy gradient prompt (green → blue → green) ---
 function fish_prompt
-    # Get current path, shorten if too long
-    set p (string replace -r "^$HOME" "$HOME" $PWD)
-    set max 30
-    if test (string length -- $p) -gt $max
-        set parts (string split "/" $p)
-        set p "$parts[1]/…/$parts[-2]/$parts[-1]"
+    # Get last command exit status
+    set exit_code $status
+
+    # Colors using named colors
+    set -l col_time (set_color --background black; set_color yellow)
+    set -l col_user (set_color --background black; set_color white)
+    set -l col_path (set_color --background black; set_color white)
+    set -l col_arrow_ok (set_color --background black; set_color white)
+    set -l col_arrow_fail (set_color --background black; set_color red)
+    set -l col_reset (set_color normal)
+
+    # SSH info
+    set -l ssh_info ""
+    if set -q SSH_CLIENT
+        set ssh_info "(ssh from "(string split " " $SSH_CLIENT)[1]") "
     end
 
-    # Gradient colors
-    set g 34 35 36 37 38 39 38 37 36 35 34
-    set gcount (count $g)
-    set l (string length -- $p)
-
-    # Print each character with gradient
-    for i in (seq $l)
-        set idx (math "floor(($i - 1) * ($gcount - 1) / $l)")
-        set c $g[(math "$idx + 1")]
-        set ch (string sub -s $i -l 1 -- $p)
-        printf "\033[38;5;%dm%s" $c $ch
+    # Arrow color based on last exit code
+    set -l arrow_color $col_arrow_ok
+    if test $exit_code -ne 0
+        set arrow_color $col_arrow_fail
     end
 
-    printf "\033[0m\n"
-
-    # Print the prompt line
-    printf "> "
+    echo -n "$ssh_info$col_time"( date +'%H:%M')" $col_path"(pwd)" $arrow_color ❯ $col_reset "
 end
 
+function blankline_enter
+    if test -z (commandline -t)
+        # Empty line: print a newline
+        printf "\n"
+    else
+        # Non-empty line: execute command normally
+        commandline -f execute
+    end
+end
+
+bind \n blankline_enter
+
+# Everything below is just to make the shell feel more interactive
+function df
+    command df $argv
+    echo "Checked filesystem usage"
+end
+
+function free
+    command free -h $argv
+    echo "Memory status checked"
+end
+
+
+function lol
+    printf "bro i know right, that was so funy \n"
+    printf " "
+end
+
+function what
+    printf "bro trueee, that was sooo weird \n"
+    printf " "
+end
+
+function huh
+    printf "bro exactly, that was so confusing \n"
+    printf " "
+end
