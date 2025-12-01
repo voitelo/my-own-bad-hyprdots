@@ -61,8 +61,6 @@ alias killlall="killall"
 alias dvd="hyprdvd --workspaces 1,2,3,4,5,6 --exit-on signal -s
 kitty,qutebrowser --title DVD"
 
-fastfetch
-
 zoxide init fish | source
 
 export PATH="/bin/scripts:$PATH"
