@@ -37,8 +37,7 @@ esac
 
 case $pkgneed in
     y)
-      yay -S base base-devel bash bat blueman bluez bluez-libs bluez-utils brightnessctl caelestia-cli caelestia-shell-git cliphist dms-shell-git dunst eza fastfetch ffmpeg fish flameshot flatpak fuzzel fzf gammastep gdu gpu-screenrecorder-git grim hyprcursor hyprgraphics hyprdvd hypremoji hypridle hyprland hyprland-guiutils hyprlang hyprlock hyprpicker hyprsettings-git hyprshot hyprswitch hyprtoolkit hyprutils imagemagick jq kitty libnotify localsend lua man-db mpv nautilus neovim networkmanager nsxiv pipewire pipewire-alsa pipewire-pulse pipewire-jack polkit polkit-gnome python tk quickshell-git qutebrowser reflector swww ttf-monocraft-git uxplay wayland wayland-protocols wmenu zsh zsh-autosuggestions zsh-syntax-highlighting
-      flatpak install -y com.discordapp.Discord
+      yay -Sy base base-devel bash bat bin binutils blueman bluez bluez-utils bluez-libs brightnessctl caelestia-cli caelestia-shell-git carigula cliphist dgop discord dms-shell-git dunst exa fastfetch ffmpeg fish flameshot flatpak fuzzel fzf gammastep gemini-cli-git npm git gpu-screen-recorder-git grim gum hyprdvd hypremoji hyprgraphics hypridle hyprland hyprland-guiutils hyprlang hyprlock hyprpicker hyprsettings-git hyprshot hyprswitch hyprtoolkit hyprutils hyprwayland-scanner imagemagick jdk-openjdk jq kitty libnotify localsend lua man-db mpc mpd nautilus ncdu nchat-git neofetch-git neovim nsxiv openssh pastel playerctl polkit polkit-gnome power-profiles-daemon python qutebrowser reflector ripgrep rmpc cargo sed swww tk tlrc uxplay wmenu xz
       flatpak install -y com.github.flxzt.rnote
       flatpak install -y com.github.tchx84.Flatseal
       flatpak install -y com.visualstudio.code
