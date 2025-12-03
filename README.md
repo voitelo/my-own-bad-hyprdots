@@ -4,9 +4,10 @@ hyprdots by voitelo
 ## MINIMUM REQUIREMENTS
 storage: ~20GB
 OS: archlinux x86_64
-all other stuff shouldnt matter much
+all other stuff shouldnt matter much![Uploading 2025-12-03_13-07.png…]()
 
-<img width="1918" height="1080" alt="2025-12-03_13-07" src="https://github.com/user-attachments/assets/d4fa1e81-48de-4408-bed5-04d5d82c5f#70" />
+
+
 
 # installation guide:
 
