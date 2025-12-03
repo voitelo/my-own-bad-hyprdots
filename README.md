@@ -1,13 +1,14 @@
 hyprdots by voitelo
 (github.com/voitelo/my-own-bad-hyprdots/)
 
+
+# you should have basic knowledge of arch already and also hyprland, this doesnt carry your hand at all
+
+
 ## MINIMUM REQUIREMENTS
 storage: ~20GB
 OS: archlinux x86_64
-all other stuff shouldnt matter much![Uploading 2025-12-03_13-07.png…]()
-
-
-
+all other stuff shouldnt matter much
 
 # installation guide:
 
